@@ -1,6 +1,9 @@
 from aiogram import Bot, Dispatcher, F
 from aiogram.types import Message
 from aiogram.filters import Command
+
+from aiogram.utils.keyboard import ReplyKeyboardBuilder
+
 import asyncio
 
 bot = Bot(token='7743295312:AAFmkYsQYr-5F_w4yaLBqZuI7btK6gmCaiY')
@@ -14,8 +17,17 @@ async def com_start(message:Message):
 
 @dp.message(Command('help'))
 async def com_help(message: Message):
+    keyboard = ReplyKeyboardBuilder()
+    keyboard.button(
+        text='/help'
+    )
+    keyboard.button(
+        text='/start'
+    )
+
     await message.answer(
-        text=f"Помоги себе сам!"
+        text=f"Помоги себе сам!",
+        reply_markup=keyboard.as_markup(),
     )
 
 @dp.message(F.text.lower() == 'java')
