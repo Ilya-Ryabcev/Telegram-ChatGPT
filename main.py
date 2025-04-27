@@ -12,15 +12,8 @@ async def com_start(message:Message):
         text=f'Привет, {message.from_user.full_name}!\n Я готов к работе'
     )
 
+    async def start_bot():
+        await dp.start_polling(bot)
 
-
-
-
-
-
-
-async def start_bot():
-    await dp.start_polling(bot)
-
-if __name__ == '__main__':
-    asyncio.run(start_bot())
+    if __name__ == '__main__':
+        asyncio.run(start_bot())
