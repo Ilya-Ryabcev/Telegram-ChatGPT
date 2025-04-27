@@ -12,23 +12,12 @@ async def com_start(message:Message):
         text=f'Привет, {message.from_user.full_name}!\n Я готов к работе'
     )
 
-@dp.message(Command('help'))
-async def com_help(message: Message):
-    await message.answer(
-        text=f"Помоги себе сам!"
-    )
 
-@dp.message(F.text.lower() == 'java')
-async def com_help(message: Message):
-    await message.answer(
-        text=f"Привет java"
-    )
 
-@dp.message(F.text)
-async def com_help(message: Message):
-    await message.answer(
-        text=f"Привет {message.text}"
-    )
+
+
+
+
 
 async def start_bot():
     await dp.start_polling(bot)
