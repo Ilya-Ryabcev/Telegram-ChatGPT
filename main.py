@@ -6,7 +6,7 @@ import asyncio
 
 from aiogram.utils.keyboard import ReplyKeyboardBuilder
 
-bot = Bot(token=os.getenv('Bot_token'))
+bot = Bot(token=os.getenv('token'))
 dp = Dispatcher()
 
 @dp.message(Command('start'))
