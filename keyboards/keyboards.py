@@ -12,9 +12,9 @@ def kb_main_menu():
 
     for button in buttons:
         keyboard.button(
-            text=button
+            text=button,
         )
-        return keyboard.as_markup(
-            resize_keyboard=True,
-            input_field_placeholder='Выберете пункт меню...'
-        )
+    return keyboard.as_markup(
+        resize_keyboard=True,
+        input_field_placeholder='Выберете пункт меню...'
+    )
