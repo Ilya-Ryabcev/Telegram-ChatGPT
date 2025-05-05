@@ -1,5 +1,5 @@
-from .keyboards import kb_main_menu
+from .keyboards import kb_reply
 
 __all__ = [
-    'kb_main_menu',
+    'kb_reply',
 ]

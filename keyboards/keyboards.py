@@ -1,15 +1,8 @@
 from aiogram.utils.keyboard import ReplyKeyboardBuilder
 
 
-def kb_main_menu():
+def kb_reply(buttons):
     keyboard = ReplyKeyboardBuilder()
-    buttons = [
-        '/random',
-        '/gpt',
-        '/talk',
-        '/quiz',
-    ]
-
     for button in buttons:
         keyboard.button(
             text=button,

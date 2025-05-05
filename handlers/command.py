@@ -1,20 +1,45 @@
-from aiogram import Router
+from aiogram import Router, F
 from aiogram.filters import Command
 from aiogram.types import Message, FSInputFile
 import os
-from keyboards import kb_main_menu
+from keyboards import kb_reply
 
 command_router = Router()
 
+@command_router.message(F.text == 'Закончить')
 @command_router.message(Command('start'))
 async def com_start(message: Message):
     photo_path = os.path.join('resources', 'images', 'main.jpg')
     text_path = os.path.join('resources', 'messages', 'main.txt')
     photo = FSInputFile(photo_path)
+    buttons = [
+        '/random',
+        '/jpt',
+        '/talk',
+        '/quiz',
+    ]
     with open(text_path, 'r', encoding='UTF-8') as file:
         msg_text = file.read()
     await message.answer_photo(
         photo=photo,
         caption=msg_text,
-        reply_markup=kb_main_menu(),
+        reply_markup=kb_reply(buttons),
+    )
+
+@command_router.message(F.text == 'Хочу еще факт')
+@command_router.message(Command('random'))
+async def com_random(message: Message):
+    photo_path = os.path.join('resources', 'images', 'random.jpg')
+    # text_path = os.path.join('resources', 'messages', 'random.txt') TODO
+    photo = FSInputFile(photo_path)
+    buttons = [
+        'Хочу еще факт',
+        'Закончить',
+
+    ]
+
+    await message.answer_photo(
+        photo=photo,
+        caption=' ',
+        reply_markup=kb_reply(buttons),
     )
